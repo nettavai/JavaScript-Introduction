@@ -1,0 +1,27 @@
+document.write("Hello world!");
+alert("Hello world!");
+console.log("Hello world");
+VM156:3 Hello world
+undefined
+
+
+Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+Warning: Don’t paste code into the DevTools Console that you don’t understand or haven’t reviewed yourself. This could allow attackers to steal your identity or take control of your computer. Please type ‘allow pasting’ below and hit Enter to allow pasting.
+allow pasting
+var x = 5;
+var y = 6;
+var z = x + y;
+console.log(z);
+alert(z);
+document.write(z);
+VM191:4 11
+var x = 50;
+var order = 'beer';
+if (x > 50) {
+document.write ("He's over 50!");
+} else if (x <= 50 && x> 30){
+document.write("middle aged man, who ordered some "+order);
+} else {
+document.write("it seems you're bit underaged.");
+}   
