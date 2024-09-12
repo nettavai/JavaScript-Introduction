@@ -25,19 +25,29 @@
 
     //Tehtävä 3
 
+    window.onload = function() {
+ 
+    if (navigator.userAgent.includes("Mozilla") && !navigator.userAgent.includes("Chrome")) {
+     
+     window.location.href = "http://www.mozilla.org";
+    } else {
+     // If it's not Mozilla, redirect to example.com
+     window.location.href = "http://www.laurea.fi";
+    }
+    };
+
    
     //Tehtävä 4
-        var isStudent = confirm("Are you a student?");
 
-// Get the HTML element to display the message
-var messageElement = document.getElementById("message");
+     var isStudent = confirm("Are you a student?");
 
-// Check the user's response and display the appropriate message
-if (isStudent) {
+    var messageElement = document.getElementById("message");
+
+    if (isStudent) {
     messageElement.textContent = "Welcome student!";
-} else {
+    } else {
     messageElement.textContent = "Sorry, this page is for students only.";
-}
+    }
 
     //Tehtävä 5 
 
