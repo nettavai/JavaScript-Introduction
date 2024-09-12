@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!--Tästä alkaa Javascript-->
+<script>
+
+    //Tehtävä 1
+
+    document.write("<cite> <strong> If I had nine hours to chop down a tree, I'd spend the first six sharpening my ax. </strong> <br>-- Abraham Lincoln </cite>");
+
+    //Tehtävä 2
+
+    function repeatingText() {
+        for (let i = 0; i < 50; i++) {
+           
+            document.write( "Tekstiä 50 kertaa" + "<br>");
+        }
+    }
+    repeatingText();
+
+    //Tehtävä 3
+
+   
+    //Tehtävä 4
+        var isStudent = confirm("Are you a student?");
+
+// Get the HTML element to display the message
+var messageElement = document.getElementById("message");
+
+// Check the user's response and display the appropriate message
+if (isStudent) {
+    messageElement.textContent = "Welcome student!";
+} else {
+    messageElement.textContent = "Sorry, this page is for students only.";
+}
+
+    //Tehtävä 5 
+
+    var Images = [
+            "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
+            "http://farm4.staticflickr.com/3808/11117153086_b64f2eafb8_m.jpg",
+            "http://farm3.staticflickr.com/2849/11117185696_8d00c7abb6_m.jpg",
+            "http://farm6.staticflickr.com/5543/11117184826_8b017ccac7_m.jpg",
+            "http://farm8.staticflickr.com/7440/11117173644_e1e55615ab_m.jpg"
+        ];
+
+        // Output the first image using document.write
+        document.write('<img src="' + Images[0] + '" alt="First Image">');   
+</script>
+
+<body>
+    
+    
+</body>
+</html>
