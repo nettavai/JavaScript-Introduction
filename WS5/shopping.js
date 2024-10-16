@@ -162,58 +162,33 @@ function init() {
 
 // -------------- EXERCISE 4: Hidden Extra Fields --------------
 
-// Function to handle the display of extra input fields based on selected contact method
-function handleContactMethodChange() {
-    'use strict';
+// Function to show the relevant field based on the selected contact method
+function showContactField() {
+    // Get the selected contact method
+    const contactMethod = document.getElementById('contact-method').value;
 
-    let contactMethod = document.getElementById('contact-method').value;
-    let emailField = document.getElementById('email-info');
-    let phoneField = document.getElementById('phone-info');
-    
     // Hide all fields initially
-    emailField.style.display = 'none';
-    phoneField.style.display = 'none';
+    document.getElementById('email-field').style.display = 'none';
+    document.getElementById('phone-field').style.display = 'none';
+    document.getElementById('sms-field').style.display = 'none';
 
-    // Show the selected field
+    // Show the appropriate field based on the selected contact method
     if (contactMethod === 'email') {
-        emailField.style.display = 'block';
+        document.getElementById('email-field').style.display = 'block';
     } else if (contactMethod === 'phone') {
-        phoneField.style.display = 'block';
+        document.getElementById('phone-field').style.display = 'block';
+    } else if (contactMethod === 'sms') {
+        document.getElementById('sms-field').style.display = 'block';
     }
-} // End of handleContactMethodChange() function.
+}
 
+// Function to initialize event listeners on window load
+function initHiddenFields() {
+    // Add an event listener to the contact method dropdown
+    const contactMethodDropdown = document.getElementById('contact-method');
+    contactMethodDropdown.addEventListener('change', showContactField);
+}
 
-// -------------- INIT FUNCTION --------------
+// Run the init function on window load
+window.onload = initHiddenFields;
 
-// Function called when the window has been loaded.
-// Function needs to add event listeners to the forms.
-function init() {
-    'use strict';
-
-    // Add an event listener to the contact form:
-    let contactForm = document.querySelector('form[onsubmit]');
-    if (contactForm) {
-        contactForm.onsubmit = validateContactForm;
-    }
-
-    // Add an event listener to the membership form:
-    let membershipForm = document.getElementById('theForm');
-    if (membershipForm) {
-        membershipForm.addEventListener('submit', calculateMembership);
-    }
-
-    // Add an event listener to the book order form:
-    let bookForm = document.getElementById('submit-calculate');
-    if (bookForm) {
-        bookForm.addEventListener('click', calculate);
-    }
-
-    // Add event listener for contact method selection
-    let contactMethodSelect = document.getElementById('contact-method');
-    if (contactMethodSelect) {
-        contactMethodSelect.addEventListener('change', handleContactMethodChange);
-    }
-} // End of init() function.
-
-// Assign an event listener to the window's load event:
-window.onload = init;

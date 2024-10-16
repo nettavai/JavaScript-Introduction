@@ -136,6 +136,37 @@
                 regarding on the selected contact method.</p>
         </li>
     </ul>
+
+    <form id="contactForm">
+        <div class="no-border">
+            <label for="contact-method">Preferred Contact Method:</label>
+            <select name="contact-method" id="contact-method">
+                <option value="" disabled selected>Select Contact Method</option>
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+                <option value="sms">SMS</option>
+            </select>
+        </div>
+    
+        <!-- Hidden fields that will be displayed based on the contact method selected -->
+        <div class="no-border" id="email-field" style="display:none;">
+            <label for="email">Enter Your Email:</label>
+            <input type="email" name="email" id="email-input">
+        </div>
+    
+        <div class="no-border" id="phone-field" style="display:none;">
+            <label for="phone">Enter Your Phone Number:</label>
+            <input type="tel" name="phone" id="phone-input">
+        </div>
+    
+        <div class="no-border" id="sms-field" style="display:none;">
+            <label for="sms">Enter Your SMS Number:</label>
+            <input type="tel" name="sms" id="sms-input">
+        </div>
+    
+        <input type="submit" value="Submit">
+    </form>
+    
     <script src="shopping.js"></script>
 </body>
 
