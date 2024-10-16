@@ -1,7 +1,5 @@
-// shopping.js
-// This script calculates an order total, validates forms, and handles membership calculations.
 
-// -------------- EXERCISE 1: Contact Form Validation --------------
+//  EXERCISE 1: Contact Form Validation
 
 // Function for validating the contact form from Exercise 1
 function validateContactForm(event) {
@@ -25,7 +23,7 @@ function validateContactForm(event) {
     if (email.length < 6 || email.length > 15 || !email.includes("@")) {
         emailField.style.border = '2px solid red';
         let errorMessage = document.createElement('span');
-        errorMessage.textContent = "Invalid email.";
+        errorMessage.textContent = "Invalid email.Full lenght min 6 max 15";
         errorMessage.style.color = 'red';
         errorMessage.id = 'email-error';
         emailField.parentNode.appendChild(errorMessage);
@@ -52,7 +50,7 @@ function validateContactForm(event) {
 } // End of validateContactForm() function.
 
 
-// -------------- EXERCISE 2: Membership Calculator --------------
+//  EXERCISE 2: Membership Calculator 
 
 // Function for calculating membership cost
 function calculateMembership(event) {
@@ -102,48 +100,64 @@ function calculateMembership(event) {
 } // End of calculateMembership() function.
 
 
-// -------------- EXERCISE 3: Book Order Calculator --------------
+// EXERCISE 3: Book Order Calculator
 
 // Function called when the form is submitted.
 // Function performs the book order calculation and returns false.
-function calculate() {
+function calculate(event) {
     'use strict';
 
-    // For storing the order total:
-    let total;
+    // Prevent form submission
+    event.preventDefault();
 
-    // Get references to the form values:
+    // Get references to the form values and ensure they are converted to numbers
     let quantity = parseInt(document.getElementById('quantity').value);
     let price = parseFloat(document.getElementById('price').value);
     let tax = parseFloat(document.getElementById('tax').value);
     let discount = parseFloat(document.getElementById('discount').value);
     let shipping = parseFloat(document.getElementById('shipping').value);
 
-    // Calculate the initial total:
-    total = quantity * price;
-
-    // Factor in the tax:
-    total = total * (1 + (tax / 100));
-
-    // Factor in the discount:
-    if (quantity > 100) {
-        total = total - (2 * discount); // Double the discount for large orders
-    } else {
-        total = total - discount;
+    // Validate that all values are numbers and not NaN
+    if (isNaN(quantity) || isNaN(price) || isNaN(tax) || isNaN(discount) || isNaN(shipping)) {
+        alert("Please enter valid numerical values.");
+        return;
     }
 
-    // Add shipping cost:
+    // Calculate the initial total (quantity * price)
+    let total = quantity * price;
+    console.log("Total before tax: " + total);
+
+    // Factor in the tax
+    total *= (1 + (tax / 100));
+    console.log("Total after tax: " + total);
+
+    // Factor in the discount
+    if (quantity > 100) {
+        total -= (2 * discount); // Double discount if quantity > 100
+    } else {
+        total -= discount;
+    }
+
+    // Add shipping cost
     total += shipping;
 
-    // Format the total to two decimal places:
+    // Format the total to two decimal places
     total = total.toFixed(2);
 
-    // Display the total:
+    // Display the total in the total field
     document.getElementById('total').value = total;
+} // End of calculate() function
 
-    // Return false to prevent submission:
-    return false;
-} // End of calculate() function.
+// Function to set up event listeners on page load
+function init() {
+    'use strict';
+
+    // Add event listener for the "Calculate" button
+    let bookForm = document.getElementById('submit-calculate');
+    if (bookForm) {
+        bookForm.addEventListener('click', calculate);
+    }
+}
 
 
 // -------------- EXERCISE 4: Hidden Extra Fields --------------
