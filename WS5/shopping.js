@@ -148,16 +148,8 @@ function calculate(event) {
     document.getElementById('total').value = total;
 } // End of calculate() function
 
-// Function to set up event listeners on page load
-function init() {
-    'use strict';
+// No need for the init function and event listener since we use the form's onsubmit
 
-    // Add event listener for the "Calculate" button
-    let bookForm = document.getElementById('submit-calculate');
-    if (bookForm) {
-        bookForm.addEventListener('click', calculate);
-    }
-}
 
 
 // -------------- EXERCISE 4: Hidden Extra Fields --------------
