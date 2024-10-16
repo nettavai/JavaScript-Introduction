@@ -27,7 +27,8 @@
     <p data-line="12">c) Should an error occur, highlight the erroneous field and provide some feedback to the user.
         Preferably by displaying some text message on the page, next to the input field. See the lecture slides for
         demo.</p>
-    <form onsubmit="">
+        <form onsubmit="validateContactForm(event)">
+
         <div class="no-border">
             <label>Email address:<br>
                 <input type="text" name="email">
@@ -54,7 +55,9 @@
         when he is eligible to get the discount, by showing a text next to form.</p>
     <p data-line="24">c) Should he pay for 5 years or more, he will get the normal 20% discount, but will also be given
         an extra 5€ discount with a special greetings text on screen.</p>
-    <form action="#" method="post" id="theForm">
+        <form action="#" method="post" id="theForm" onsubmit="calculateMembership(event)">
+            <p id="discount-message"></p>
+            
         <fieldset>
             <legend>Create Your Membership</legend>
             <p>Complete this form to calculate your membership. There's a 20% discount if you enroll for more than one
@@ -82,6 +85,7 @@
 
     <p data-line="20">&nbsp;</p>
     <hr />
+
     <h2>Exercise 3: Book Order</h2>
     <p data-line="27">In many cases, developer has to maintain and develop code written by someone else. Look at the
         HTML code and JavaScript code below. Study how does it work and what is the logic behind it.</p>
@@ -93,6 +97,8 @@
     <p data-line="35">c) modify the HTML form to include a shipping field, and include this value in the total
         calculation in shopping.js.</p>
     <p>&nbsp;</p>
+
+    <form onsubmit="calculate(event)">
     <fieldset>
         <p>Calculate a bulk book order.</p>
     <div>
@@ -123,6 +129,7 @@
         <input type="submit" value="Calculate" id="submit-calculate">
     </div>
     </fieldset>
+    </form>
 
     <hr />
     <h2>Exercise 4: Hidden Extra fields</h2>
@@ -166,7 +173,7 @@
     
         <input type="submit" value="Submit">
     </form>
-    
+
     <script src="shopping.js"></script>
 </body>
 
