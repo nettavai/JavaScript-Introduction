@@ -1,11 +1,17 @@
-// TEHTÄVÄ 1
+// Exercise 1: Saving Data to LocalStorage
 function getData() {
     // Get the input values
-    let destination = document.getElementById('destination').value;
-    let arrival = document.getElementById('arrival').value;
+    const destination = document.getElementById('destination').value;
+    const arrival = document.getElementById('arrival').value;
+
+    // Validate inputs
+    if (!destination || !arrival) {
+        alert("Please fill out all fields before saving!");
+        return;
+    }
 
     // Get selected services
-    let services = [];
+    const services = [];
     document.querySelectorAll('#services input[type="checkbox"]:checked').forEach((checkbox) => {
         services.push(checkbox.value);
     });
@@ -18,7 +24,7 @@ function getData() {
     alert('Data saved to LocalStorage!');
 }
 
-// TEHTÄVÄ 2
+// Exercise 2: Reloading Saved Data from LocalStorage
 function loadData() {
     // Retrieve data from LocalStorage
     const destination = localStorage.getItem('destination');
@@ -36,11 +42,17 @@ function loadData() {
     }
 }
 
-// TEHTÄVÄ 3
+// Exercise 3: Using SessionStorage
 function getSessionData() {
     // Get the input values
     const destination = document.getElementById('destination').value;
     const arrival = document.getElementById('arrival').value;
+
+    // Validate inputs
+    if (!destination || !arrival) {
+        alert("Please fill out all fields before saving!");
+        return;
+    }
 
     // Get selected services
     const services = [];
@@ -56,13 +68,12 @@ function getSessionData() {
     alert('Data saved to SessionStorage!');
 }
 
+// Reload SessionStorage Data
 function loadSessionData() {
-    // Retrieve data from SessionStorage
     const destination = sessionStorage.getItem('destination');
     const arrival = sessionStorage.getItem('arrival');
     const services = JSON.parse(sessionStorage.getItem('services'));
 
-    // Display data if it exists
     if (destination || arrival || services) {
         const sessionDataDiv = document.getElementById('sessiondata');
         sessionDataDiv.innerHTML = `
@@ -73,11 +84,16 @@ function loadSessionData() {
     }
 }
 
+// Clear All Saved Data
+function clearData() {
+    localStorage.clear();
+    sessionStorage.clear();
+    alert("All saved data has been cleared!");
+    document.getElementById('sessiondata').innerHTML = "Session data goes here!";
+}
+
 // Call load functions on page load
 window.onload = function () {
-    // Load LocalStorage data for Exercise 2
-    loadData();
-
-    // Load SessionStorage data for Exercise 3
-    loadSessionData();
+    loadData(); // Load LocalStorage data
+    loadSessionData(); // Load SessionStorage data
 };

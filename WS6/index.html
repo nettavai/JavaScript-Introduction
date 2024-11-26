@@ -5,7 +5,6 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="styles.css">
         <script src="index.js"></script>
-
 	</head>
 	<body class="ws6" onload="loadData()">
 		<h1>Workshop 6: Using Localstorage</h1>
@@ -22,7 +21,7 @@
 		</div>
 		<div>
 			<label for="arrival">Arrival Date:</label>
-			<input type="text" name="textfield" id="arrival">
+			<input type="date" name="textfield" id="arrival">
 		</div>
 		<div id="services" class="border">
 			<p>Services:</p>
@@ -34,7 +33,9 @@
 		</div>	
 		<div class="clear">
 			<p>
-			  <input type="button" name="button" id="button" value="Reserve" onclick="getData()">
+			  <input type="button" name="button" id="button" value="Reserve to LocalStorage" onclick="getData()">
+			  <input type="button" name="button" value="Reserve to SessionStorage" onclick="getSessionData()">
+			  <input type="button" value="Clear Data" onclick="clearData()">
 			</p>
 		</div>
 		<hr/>
@@ -63,4 +64,4 @@
 			restarts.</p>
 		</div>
 	</body>
-</html>
+</HTML>
